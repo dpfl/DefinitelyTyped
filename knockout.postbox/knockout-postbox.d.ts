@@ -29,6 +29,14 @@ interface KnockoutObservableArray<T> {
 	syncWith(topic: string, initializeWithLatestValue?: boolean, skipInitialPublish?: boolean, equalityComparer?: (newValue: any /* T */, oldValue: any /* T */) => boolean): KnockoutObservableArray<T>;
 }
 
+interface KnockoutComputed<T> {
+	subscribeTo(topic: string, useLastPublishedValueToInitialize?: boolean, transform?: (val: any) => any /* T */): KnockoutComputed<T>;
+	unsubscribeFrom(topic: string): KnockoutComputed<T>;
+	publishOn(topic: string, skipInitialPublish?: boolean, equalityComparer?: (newValue: any /* T */, oldValue: any /* T */) => boolean): KnockoutComputed<T>;
+	stopPublishingOn(topic: string): KnockoutComputed<T>;
+	syncWith(topic: string, initializeWithLatestValue?: boolean, skipInitialPublish?: boolean, equalityComparer?: (newValue: any /* T */, oldValue: any /* T */) => boolean): KnockoutComputed<T>;
+}
+
 interface KnockoutStatic {
     postbox: KnockoutPostBox;
 }
